@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String myAah = sc.next();
+        String docAah = sc.next();
+
+        // 'a' 개수를 비교
+        int myCount = myAah.length() - 1; // 마지막 'h' 제외
+        int docCount = docAah.length() - 1;
+
+        if (myCount >= docCount) {
+            System.out.println("go");
+        } else {
+            System.out.println("no");
+        }
+    }
+}
