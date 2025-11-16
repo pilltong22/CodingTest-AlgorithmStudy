@@ -1,22 +1,31 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws Exception{
+        int a,b,c,d,e,f;
+        int x,y;
 
-        int a = sc.nextInt();
-        int b = sc.nextInt();
-        int c = sc.nextInt();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        
+        a = Integer.parseInt(st.nextToken());
+        b = Integer.parseInt(st.nextToken());
+        c = Integer.parseInt(st.nextToken());
+        d = Integer.parseInt(st.nextToken());
+        e = Integer.parseInt(st.nextToken());
+        f = Integer.parseInt(st.nextToken());
+        
+        for(x=-999; x<=999; x++) {
+            for(y = -999; y<= 999; y++) {
+                if(a*x + b*y ==c && d*x + e*y == f){
+                    System.out.println(x+" "+y);
+                    break;
+                }
+            }
+        }
 
-        int d = sc.nextInt();
-        int e = sc.nextInt();
-        int f = sc.nextInt();
 
-        int denominator = a * e - b * d;
-
-        int x = (c * e - b * f) / denominator;
-        int y = (a * f - c * d) / denominator;
-
-        System.out.println(x + " " + y);
     }
 }
