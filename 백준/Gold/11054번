@@ -1,0 +1,45 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        int[] arr = new int[N];
+        int[] upDp = new int[N];   // 왼쪽부터 증가하는 길이
+        int[] downDp = new int[N]; // 오른쪽부터 증가하는(왼쪽기준 감소하는) 길이
+
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < N; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
+        }
+
+        // 1. LIS (Left to Right)
+        for (int i = 0; i < N; i++) {
+            upDp[i] = 1;
+            for (int j = 0; j < i; j++) {
+                if (arr[j] < arr[i]) {
+                    upDp[i] = Math.max(upDp[i], upDp[j] + 1);
+                }
+            }
+        }
+
+        // 2. LDS (Right to Left)
+        for (int i = N - 1; i >= 0; i--) {
+            downDp[i] = 1;
+            for (int j = N - 1; j > i; j--) {
+                if (arr[j] < arr[i]) {
+                    downDp[i] = Math.max(downDp[i], downDp[j] + 1);
+                }
+            }
+        }
+
+        // 3. 결과 계산
+        int max = 0;
+        for (int i = 0; i < N; i++) {
+            max = Math.max(max, upDp[i] + downDp[i] - 1);
+        }
+
+        System.out.println(max);
+    }
+}
