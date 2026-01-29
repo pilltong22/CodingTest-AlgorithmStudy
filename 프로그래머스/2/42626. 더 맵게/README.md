@@ -1,4 +1,4 @@
-# [level 2] 더 맵게 - 42626 
+# [level 2] 더 맵게 - 4262
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42626?language=java) 
 
